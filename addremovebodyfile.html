@@ -1,0 +1,20 @@
+Add and Remove Class from body tag - Angular (Add this code in your component) 
+
+Add
+document.getElementsByTagName('body')['0'].classList.add('home-page');
+
+Remove:
+document.getElementsByTagName('body')['0'].classList.remove('home-page');
+
+Example: HomeComponent
+export class HomeComponent implements OnInit {
+  constructor() { }
+  ngOnInit(): void {
+    // Add Class in body
+    document.getElementsByTagName('body')['0'].classList.add('home-page');
+  }
+  ngOnDestroy(): void {
+    // Remove Class in body
+    document.getElementsByTagName('body')['0'].classList.remove('home-page');
+  }
+}
