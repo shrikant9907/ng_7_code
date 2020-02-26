@@ -1,0 +1,63 @@
+3. Steps to add Slick Slider in angular: (Font awesome icons used as arrow)
+Install Scripts
+npm install jquery --save   
+npm install slick-carousel --save
+npm install ngx-slick-carousel --save
+2. Add files in angular.json
+"styles": [
+    "./node_modules/slick-carousel/slick/slick.scss",
+    "./node_modules/slick-carousel/slick/slick-theme.scss",
+    "src/styles.scss"
+], 
+"scripts": [
+    "./node_modules/jquery/dist/jquery.min.js",
+    "./node_modules/slick-carousel/slick/slick.min.js"
+]
+3. import library in app.module.ts file.
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+and
+  imports: [
+    BrowserModule,
+    SlickCarouselModule
+  ],
+4. Add slider with following code in components .html file
+<ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig">
+    <div ngxSlickItem="ngxSlickItem" *ngFor="let slide of slides" class="slide">
+        <img src="{{ slide.img }}" alt="" width="100%"></div>
+</ngx-slick-carousel> 
+and in .ts file (Replace the images or use services)
+  slides = [
+    {img: "https://images.unsplash.com/photo-1548270592-2a3ce1c8cc03?ixlib=rb-1.2.1&auto=format&fit=crop&w=732&q=80"},
+    {img: "https://images.unsplash.com/photo-1582005450386-52b25f82d9bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"},
+    {img: "https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80"},
+    {img: "https://images.unsplash.com/photo-1562664348-2188b99b5157?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"},
+    {img: "https://images.unsplash.com/photo-1578991624414-276ef23a534f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=885&q=80"}
+  ];
+  slideConfig = {
+    "slidesToShow": 3, 
+    "slidesToScroll": 1,
+    "nextArrow":"<div class='nav-btn next-slide position-absolute'><i class='fa fa-angle-right' aria-hidden='true'></i></div>",
+    "prevArrow":"<div class='nav-btn prev-slide position-absolute'><i class='fa fa-angle-left' aria-hidden='true'></i></div>",
+    "dots":true,
+    "infinite": true
+  };
+5. Finally add this scss code in style.scss file of the app.
+// Slick slider
+.carousel {
+    .slick-arrow {
+        top: calc(50% - 25px);
+        font-size: 50px;
+        left: 20px;
+        z-index: 999;
+        text-shadow: 0px 0px 14px #fff;
+        cursor: pointer;
+    }
+    .slick-arrow.next-slide {
+        left: unset;
+        right: 20px;
+    }
+}
+6. Run the project again with ng serve (edited)
