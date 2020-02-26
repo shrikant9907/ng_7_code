@@ -1,0 +1,29 @@
+PWA Setup for Angular Project:
+
+Step1: Run your angular project ng serve
+
+Step2: Add PWS ng add @angular/pwa  It will add <link rel="manifest" href="manifest.webmanifest"> in index.html file and a new file ngsw-config.json
+
+This file will be linked already in angular.json file.
+"assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/manifest.webmanifest"
+            ],
+and
+"serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
+
+Step3: Create Production Build: ng build --prod
+
+Step4: Install server: sudo npm install -g http-server
+
+Step5: http-server -p 8080 dist/pwaang/
+
+In this the dist/pwaang is the angular project directory path;
+
+You can access it from :
+
+Available on:
+  http://127.0.0.1:8080
+  http://192.168.1.5:8080
